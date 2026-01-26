@@ -14,6 +14,8 @@
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             transition: background-color 0.5s ease;
+            margin: 0;
+            padding: 0;
         }
         h1, h2, h3, .font-serif {
             font-family: 'Playfair Display', serif;
@@ -33,24 +35,31 @@
             background: rgba(217, 119, 6, 0.8);
         }
         @keyframes fade-in {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-in {
-            animation: fade-in 0.6s ease-out forwards;
+            animation: fade-in 0.8s ease-out forwards;
+        }
+        /* Garantir que não haja flash branco no carregamento do dark mode */
+        html.dark {
+            background-color: #0c0a09;
         }
     </style>
 <script type="importmap">
 {
   "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4"
+    "react/": "https://esm.sh/react@^19.2.4/"
   }
 }
 </script>
 </head>
-<body>
+<body class="bg-stone-950 text-stone-100">
     <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
 </body>
 </html>
