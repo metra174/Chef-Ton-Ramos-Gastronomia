@@ -24,58 +24,68 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ id, title, subtitle, i
   };
 
   return (
-    <section id={id} className="relative w-full overflow-hidden min-h-screen flex flex-col justify-center">
-      <div 
-        className="absolute inset-0 bg-cover bg-center z-0"
-        style={{ backgroundImage: `url("${backgroundImage}")`, backgroundAttachment: 'fixed' }}
-      >
-        {/* Overlay mais escuro para garantir que as letras brancas/pretas "saltem" da tela */}
-        <div className={`absolute inset-0 backdrop-blur-[2px] ${theme === 'dark' ? 'bg-stone-950/80' : 'bg-white/60'}`}></div>
-      </div>
-      
-      <div className="relative z-10 py-24 px-6 flex flex-col items-center">
-        <div className="text-center mb-16 animate-fade-in">
-          <div className={`backdrop-blur-xl border p-8 md:p-12 rounded-[3rem] shadow-2xl inline-block max-w-4xl ${theme === 'dark' ? 'bg-white/10 border-white/10' : 'bg-white/90 border-stone-200 shadow-stone-200/50'}`}>
-            <h2 className={`text-4xl md:text-6xl font-serif font-bold mb-4 tracking-tight ${theme === 'dark' ? 'text-white' : 'text-stone-900'}`}>{title}</h2>
-            {subtitle && <p className={`text-sm md:text-lg font-light tracking-[0.1em] opacity-70 ${theme === 'dark' ? 'text-stone-300' : 'text-stone-600'}`}>{subtitle}</p>}
+    <section id={id} className="relative w-full min-h-screen flex flex-col lg:flex-row overflow-hidden border-b border-amber-600/10">
+      {/* Coluna de Imagem / Atmosfera */}
+      <div className="relative w-full lg:w-2/5 h-[40vh] lg:h-auto overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-[20s] hover:scale-110"
+          style={{ backgroundImage: `url("${backgroundImage}")` }}
+        >
+          <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-stone-950/40' : 'bg-white/20'}`}></div>
+        </div>
+        
+        {/* Título da Seção - Integrado à imagem no Desktop */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center backdrop-blur-[2px]">
+          <div className={`p-8 md:p-12 rounded-[2rem] backdrop-blur-xl border ${theme === 'dark' ? 'bg-stone-950/60 border-white/10' : 'bg-white/70 border-stone-200'}`}>
+            <span className="text-amber-600 font-bold uppercase tracking-[0.4em] text-[10px] mb-4 block">Especialidade</span>
+            <h2 className={`text-4xl md:text-6xl font-serif font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-stone-900'}`}>{title}</h2>
+            {subtitle && <p className={`text-xs md:text-sm font-light tracking-[0.2em] uppercase opacity-70 ${theme === 'dark' ? 'text-stone-300' : 'text-stone-600'}`}>{subtitle}</p>}
           </div>
         </div>
+      </div>
 
-        <div className="max-w-7xl w-full mx-auto">
-          <div className={`backdrop-blur-2xl border p-8 md:p-16 rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] ${theme === 'dark' ? 'bg-stone-900/40 border-white/5' : 'bg-white/95 border-stone-100 shadow-stone-200/40'}`}>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-20 gap-y-4">
-              {items.map((item, idx) => (
-                <div key={idx} className={`group flex flex-col sm:flex-row sm:items-center p-4 rounded-2xl transition-all duration-500 border-b border-transparent hover:bg-amber-600/5 ${theme === 'dark' ? 'hover:border-white/5' : 'hover:border-stone-200'}`}>
-                  <div className="flex-grow flex flex-col sm:flex-row sm:items-baseline gap-3 overflow-hidden mb-2 sm:mb-0">
-                    {/* Letras mais bonitas, visíveis e com maior peso */}
-                    <span className={`text-xl md:text-2xl font-serif font-bold transition-all duration-300 group-hover:text-amber-600 group-hover:translate-x-1 ${theme === 'dark' ? 'text-stone-100' : 'text-stone-900'}`}>
-                      {item.name}
-                    </span>
-                    <div className={`hidden sm:block flex-grow border-b border-dotted mx-2 relative top-[-6px] opacity-10 transition-opacity group-hover:opacity-30 ${theme === 'dark' ? 'border-white' : 'border-stone-950'}`}></div>
-                  </div>
-                  
-                  <div className="flex items-center justify-between sm:justify-end gap-6">
-                    <span className="text-amber-600 font-mono font-black text-xl md:text-2xl whitespace-nowrap shrink-0 drop-shadow-sm">
+      {/* Coluna do Menu - Lista Editorial */}
+      <div className={`relative w-full lg:w-3/5 py-20 px-6 md:px-16 lg:px-24 flex flex-col justify-center ${theme === 'dark' ? 'bg-stone-950' : 'bg-stone-50'}`}>
+        <div className="max-w-3xl w-full mx-auto">
+          <div className="grid grid-cols-1 gap-y-12">
+            {items.map((item, idx) => (
+              <div 
+                key={idx} 
+                className="group relative flex flex-col transition-all duration-500"
+              >
+                <div className="flex justify-between items-end mb-2">
+                  <h3 className={`text-xl md:text-3xl font-serif font-bold transition-colors group-hover:text-amber-600 ${theme === 'dark' ? 'text-stone-100' : 'text-stone-900'}`}>
+                    {item.name}
+                  </h3>
+                  <div className="flex items-center gap-6">
+                    <span className="text-amber-600 font-mono font-black text-lg md:text-2xl whitespace-nowrap">
                       {formatCurrency(item.price)}
                     </span>
-                    
                     <button 
                       onClick={() => handleAction(item.name)}
-                      className="p-2.5 rounded-full bg-amber-600 text-white hover:bg-amber-700 transition-all shadow-lg hover:scale-110 active:scale-95"
-                      title="Adicionar ao pedido"
+                      className="p-2 md:p-3 rounded-full bg-amber-600 text-white hover:bg-amber-700 transition-all shadow-lg hover:scale-110 active:scale-95 group/btn"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="md:w-6 md:h-6"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                     </button>
                   </div>
                 </div>
-              ))}
-            </div>
-            
-            <div className="mt-16 text-center">
-                <p className={`text-xs uppercase tracking-[0.4em] font-bold ${theme === 'dark' ? 'text-stone-500' : 'text-stone-400'}`}>
-                   * Encomendas com 3 dias de antecedência para garantir a frescura.
-                </p>
-            </div>
+                
+                {/* Linha decorativa minimalista */}
+                <div className={`w-full h-[1px] transition-all duration-700 ${theme === 'dark' ? 'bg-white/10 group-hover:bg-amber-600/50 group-hover:w-full' : 'bg-stone-200 group-hover:bg-amber-600/50'}`}></div>
+                
+                {/* Elemento de fundo sutil no hover */}
+                <div className="absolute -inset-x-6 -inset-y-4 rounded-2xl bg-amber-600/0 group-hover:bg-amber-600/[0.03] transition-colors -z-10"></div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-20 pt-10 border-t border-dashed border-stone-800 flex items-center gap-4">
+             <div className="w-12 h-12 rounded-full border border-amber-600/30 flex items-center justify-center text-amber-600 animate-pulse">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+             </div>
+             <p className={`text-xs uppercase tracking-[0.2em] font-medium italic ${theme === 'dark' ? 'text-stone-500' : 'text-stone-400'}`}>
+                Reserva obrigatória com 72 horas de antecedência.
+             </p>
           </div>
         </div>
       </div>

@@ -63,8 +63,8 @@ const App: React.FC = () => {
 
         <MenuSection 
           id="entradas"
-          title="Entradas Premium" 
-          subtitle="Para começar sua experiência da melhor forma"
+          title="Entradas" 
+          subtitle="Para começar com sofisticação"
           items={ENTRADAS} 
           backgroundImage="https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&q=80&w=2000"
           theme={theme}
@@ -74,7 +74,7 @@ const App: React.FC = () => {
         <MenuSection 
           id="menu"
           title="Pacotes Cubas" 
-          subtitle="A especialidade do Chef Ton Ramos (Para 10-12 pessoas)"
+          subtitle="A Excelência em Grandes Porções"
           items={PACOTES_CUBAS} 
           backgroundImage="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=80&w=2000"
           theme={theme}
@@ -84,7 +84,7 @@ const App: React.FC = () => {
         <MenuSection 
           id="mini-cubas"
           title="Mini Cubas" 
-          subtitle="Versões reduzidas com o mesmo sabor excepcional"
+          subtitle="O Sabor Autêntico em Dose Menor"
           items={MINI_CUBAS} 
           backgroundImage="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&q=80&w=2000"
           theme={theme}
@@ -93,8 +93,8 @@ const App: React.FC = () => {
 
         <MenuSection 
           id="guarnacoes"
-          title="Guarnições Típicas" 
-          subtitle="O acompanhamento perfeito para o seu prato principal"
+          title="Guarnições" 
+          subtitle="Acompanhamentos de Tradição"
           items={GUARNACOES} 
           backgroundImage="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=2000"
           theme={theme}
