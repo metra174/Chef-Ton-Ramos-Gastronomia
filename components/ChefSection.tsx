@@ -6,6 +6,9 @@ interface ChefSectionProps {
 }
 
 export const ChefSection: React.FC<ChefSectionProps> = ({ theme }) => {
+  // Usando uma das fotos reais enviadas para representar o trabalho do chef
+  const chefWorkImg = "https://i.imgur.com/e3aM6sk.jpeg";
+
   return (
     <section id="chef" className="relative py-24 px-6 overflow-hidden min-h-screen flex items-center">
       <div 
@@ -15,40 +18,45 @@ export const ChefSection: React.FC<ChefSectionProps> = ({ theme }) => {
           backgroundAttachment: 'fixed'
         }}
       >
-        <div className={`absolute inset-0 backdrop-blur-sm ${theme === 'dark' ? 'bg-stone-950/80' : 'bg-white/70'}`}></div>
+        <div className={`absolute inset-0 backdrop-blur-sm ${theme === 'dark' ? 'bg-stone-950/85' : 'bg-white/75'}`}></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
+        <div className="flex flex-col lg:flex-row items-center gap-16 md:gap-24">
           <div className="relative w-full lg:w-1/2 flex justify-center">
-            <div className={`relative z-10 w-full max-w-sm aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border ${theme === 'dark' ? 'border-white/10' : 'border-stone-200'}`}>
-              <img 
-                src="https://images.unsplash.com/photo-1577214286173-0ad444510f01?auto=format&fit=crop&q=80&w=1000" 
-                alt="Chef Ton Ramos" 
-                className="w-full h-full object-cover"
-              />
+            <div className="relative group">
+               {/* Decoração sutil */}
+               <div className="absolute -inset-4 bg-amber-600/20 blur-2xl rounded-[4rem] group-hover:bg-amber-600/30 transition-all duration-1000"></div>
+               
+               <div className={`relative z-10 w-full max-w-md aspect-[4/5] rounded-[3.5rem] overflow-hidden shadow-2xl border-8 ${theme === 'dark' ? 'border-stone-900' : 'border-white'}`}>
+                <img 
+                  src={chefWorkImg} 
+                  alt="Trabalho do Chef Ton Ramos" 
+                  className="w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-110"
+                />
+              </div>
             </div>
           </div>
 
-          <div className={`w-full lg:w-1/2 backdrop-blur-xl border p-8 md:p-12 rounded-[3rem] shadow-2xl ${theme === 'dark' ? 'bg-white/5 border-white/10' : 'bg-white border-stone-100'}`}>
-            <div className="inline-block px-4 py-1 bg-amber-600/10 rounded-full mb-6">
-               <span className="text-amber-600 font-bold tracking-[0.2em] uppercase text-xs">A Arte de Cozinhar</span>
+          <div className={`w-full lg:w-1/2 backdrop-blur-2xl border p-10 md:p-16 rounded-[4rem] shadow-2xl transition-all duration-500 ${theme === 'dark' ? 'bg-white/5 border-white/10' : 'bg-white/90 border-stone-200 shadow-stone-200/50'}`}>
+            <div className="inline-block px-5 py-2 bg-amber-600/10 rounded-full mb-8">
+               <span className="text-amber-600 font-bold tracking-[0.3em] uppercase text-[10px]">Especialidade & Dedicação</span>
             </div>
-            <h2 className={`text-4xl md:text-5xl font-serif font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-stone-900'}`}>
-              Chef Ton Ramos
+            <h2 className={`text-4xl md:text-6xl font-serif font-bold mb-8 ${theme === 'dark' ? 'text-white' : 'text-stone-900'}`}>
+              Chef Ton <span className="text-amber-600">Ramos</span>
             </h2>
-            <div className={`space-y-6 font-light text-lg leading-relaxed ${theme === 'dark' ? 'text-stone-300' : 'text-stone-600'}`}>
+            <div className={`space-y-8 font-light text-lg md:text-xl leading-relaxed ${theme === 'dark' ? 'text-stone-300' : 'text-stone-600'}`}>
               <p>
-                Referência na gastronomia de Luanda, o <span className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-stone-900'}`}>Chef Ton Ramos</span> transforma ingredientes selecionados em experiências inesquecíveis.
+                Com anos de experiência na alta gastronomia de Luanda, o <span className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-stone-900'}`}>Chef Ton Ramos</span> é o mestre por trás dos sabores que encantam paladares exigentes.
               </p>
-              <p className={`p-6 rounded-2xl border-l-4 border-amber-600 italic ${theme === 'dark' ? 'bg-amber-600/10 text-stone-200' : 'bg-stone-50 text-stone-700'}`}>
-                "Sabor autêntico e sofisticação em cada detalhe da sua mesa."
+              <p className={`p-8 rounded-[2.5rem] border-l-8 border-amber-600 italic leading-relaxed ${theme === 'dark' ? 'bg-amber-600/5 text-stone-200' : 'bg-stone-50 text-stone-700 shadow-inner'}`}>
+                "Minha missão é transformar cada ingrediente em uma memória afetiva, servindo não apenas comida, mas momentos de pura celebração."
               </p>
             </div>
             
-            <div className="mt-10">
-               <a href="#contato" className="w-full sm:w-auto px-8 py-4 bg-amber-600/10 text-amber-600 font-bold rounded-xl border border-amber-600/20 hover:bg-amber-600/20 transition-all uppercase tracking-widest text-xs inline-block text-center">
-                 Encomendar Agora
+            <div className="mt-12">
+               <a href="#contato" className="px-12 py-5 bg-amber-600 text-white font-bold rounded-full shadow-xl hover:bg-amber-700 transition-all uppercase tracking-widest text-xs inline-block text-center hover:-translate-y-1">
+                 Falar com o Chef
                </a>
             </div>
           </div>

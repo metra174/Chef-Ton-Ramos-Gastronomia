@@ -21,14 +21,16 @@ export const OrderForm: React.FC<OrderFormProps> = ({ theme, order, setOrder }) 
     [order.selectedPackageId]
   );
 
-  const subtotalBuffet = (selectedPackage?.pricePerPerson || 0) * (order.peopleCount || 0);
+  // Fix: Ensure arithmetic operands are treated as numbers to avoid typing errors
+  const subtotalBuffet = (Number(selectedPackage?.pricePerPerson) || 0) * (Number(order.peopleCount) || 0);
 
   const allAvailableExtras = useMemo(() => [...PACOTES_CUBAS, ...MINI_CUBAS, ...ENTRADAS, ...GUARNACOES], []);
 
   const subtotalExtras = useMemo(() => {
     return Object.entries(order.extraItems).reduce((acc, [name, qty]) => {
       const item = allAvailableExtras.find(i => i.name === name);
-      return acc + (item?.price || 0) * qty;
+      // Fix: Explicitly cast qty and price to number to resolve "The right-hand side of an arithmetic operation must be of type 'any', 'number'..."
+      return acc + (Number(item?.price) || 0) * Number(qty);
     }, 0);
   }, [order.extraItems, allAvailableExtras]);
 

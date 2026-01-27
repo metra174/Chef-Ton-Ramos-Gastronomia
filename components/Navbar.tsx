@@ -19,10 +19,10 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   }, []);
 
   const navLinks = [
+    { label: 'Chef', href: '#chef' },
+    { label: 'Galeria', href: '#galeria' },
     { label: 'Menu', href: '#menu' },
     { label: 'Mini Cubas', href: '#mini-cubas' },
-    { label: 'Entradas', href: '#entradas' },
-    { label: 'Guarnições', href: '#guarnacoes' },
     { label: 'Encomendar', href: '#contato', primary: true },
   ];
 

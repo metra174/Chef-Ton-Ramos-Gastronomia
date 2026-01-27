@@ -3,6 +3,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { MenuSection } from './components/MenuSection';
+import { ChefSection } from './components/ChefSection';
+import { GallerySection } from './components/GallerySection';
 import { Footer } from './components/Footer';
 import { OrderForm } from './components/OrderForm';
 import { PACOTES_CUBAS, MINI_CUBAS, ENTRADAS, GUARNACOES } from './constants';
@@ -55,7 +57,10 @@ const App: React.FC = () => {
       <main className="relative">
         <Hero theme={theme} />
         
-        {/* Expanded Menu Sections */}
+        <ChefSection theme={theme} />
+
+        <GallerySection theme={theme} />
+
         <MenuSection 
           id="entradas"
           title="Entradas Premium" 
@@ -96,7 +101,6 @@ const App: React.FC = () => {
           onOrderItem={addItemToOrder}
         />
 
-        {/* Order Form */}
         <OrderForm 
           theme={theme} 
           order={order} 
