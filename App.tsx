@@ -5,7 +5,7 @@ import { Hero } from './components/Hero';
 import { MenuSection } from './components/MenuSection';
 import { Footer } from './components/Footer';
 import { OrderForm } from './components/OrderForm';
-import { PACOTES_CUBAS, MINI_CUBAS } from './constants';
+import { PACOTES_CUBAS, MINI_CUBAS, ENTRADAS, GUARNACOES } from './constants';
 import { OrderState } from './types';
 
 const App: React.FC = () => {
@@ -55,12 +55,21 @@ const App: React.FC = () => {
       <main className="relative">
         <Hero theme={theme} />
         
-        {/* Removed redundant sections to keep the site clean as requested */}
+        {/* Expanded Menu Sections */}
+        <MenuSection 
+          id="entradas"
+          title="Entradas Premium" 
+          subtitle="Para começar sua experiência da melhor forma"
+          items={ENTRADAS} 
+          backgroundImage="https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&q=80&w=2000"
+          theme={theme}
+          onOrderItem={addItemToOrder}
+        />
 
-        {/* Essential Menu Sections */}
         <MenuSection 
           id="menu"
           title="Pacotes Cubas" 
+          subtitle="A especialidade do Chef Ton Ramos (Para 10-12 pessoas)"
           items={PACOTES_CUBAS} 
           backgroundImage="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=80&w=2000"
           theme={theme}
@@ -70,13 +79,24 @@ const App: React.FC = () => {
         <MenuSection 
           id="mini-cubas"
           title="Mini Cubas" 
+          subtitle="Versões reduzidas com o mesmo sabor excepcional"
           items={MINI_CUBAS} 
           backgroundImage="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&q=80&w=2000"
           theme={theme}
           onOrderItem={addItemToOrder}
         />
 
-        {/* Essential Order Form */}
+        <MenuSection 
+          id="guarnacoes"
+          title="Guarnições Típicas" 
+          subtitle="O acompanhamento perfeito para o seu prato principal"
+          items={GUARNACOES} 
+          backgroundImage="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=2000"
+          theme={theme}
+          onOrderItem={addItemToOrder}
+        />
+
+        {/* Order Form */}
         <OrderForm 
           theme={theme} 
           order={order} 

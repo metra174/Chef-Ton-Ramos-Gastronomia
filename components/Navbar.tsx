@@ -19,9 +19,10 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   }, []);
 
   const navLinks = [
-    { label: 'O Chef', href: '#chef' },
     { label: 'Menu', href: '#menu' },
     { label: 'Mini Cubas', href: '#mini-cubas' },
+    { label: 'Entradas', href: '#entradas' },
+    { label: 'Guarnições', href: '#guarnacoes' },
     { label: 'Encomendar', href: '#contato', primary: true },
   ];
 
@@ -54,12 +55,12 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
           </a>
           
           <div className="hidden md:flex items-center space-x-10">
-            <div className={`flex items-center space-x-10 font-bold transition-colors duration-300 ${theme === 'dark' ? 'text-stone-200' : 'text-stone-700'}`}>
+            <div className={`flex items-center space-x-8 font-bold transition-colors duration-300 ${theme === 'dark' ? 'text-stone-200' : 'text-stone-700'}`}>
               {navLinks.map((link) => (
                 <a 
                   key={link.href} 
                   href={link.href} 
-                  className={`text-[11px] uppercase tracking-[0.2em] hover:text-amber-600 transition-all ${link.primary ? 'bg-amber-600 text-white px-8 py-3 rounded-full hover:bg-amber-700 hover:text-white shadow-xl hover:-translate-y-0.5' : 'hover:-translate-y-0.5'}`}
+                  className={`text-[10px] uppercase tracking-[0.2em] hover:text-amber-600 transition-all ${link.primary ? 'bg-amber-600 text-white px-8 py-3 rounded-full hover:bg-amber-700 hover:text-white shadow-xl hover:-translate-y-0.5' : 'hover:-translate-y-0.5'}`}
                 >
                   {link.label}
                 </a>
@@ -95,12 +96,12 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
       </nav>
 
       <div className={`fixed inset-0 z-40 transition-all duration-700 transform ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'} flex flex-col items-center justify-center p-8 backdrop-blur-3xl ${theme === 'dark' ? 'bg-stone-950/98' : 'bg-white/98'}`}>
-        <div className="flex flex-col space-y-10 text-center">
+        <div className="flex flex-col space-y-8 text-center">
           {navLinks.map((link) => (
             <a 
               key={link.href} 
               href={link.href} 
-              className={`text-4xl font-serif font-bold hover:text-amber-600 transition-colors ${theme === 'dark' ? 'text-white' : 'text-stone-900'}`}
+              className={`text-3xl font-serif font-bold hover:text-amber-600 transition-colors ${theme === 'dark' ? 'text-white' : 'text-stone-900'}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.label}
