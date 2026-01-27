@@ -12,6 +12,7 @@ import { OrderState } from './types';
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [isFabHovered, setIsFabHovered] = useState(false);
   const [order, setOrder] = useState<OrderState>({
     customerName: '',
     phoneNumber: '',
@@ -34,7 +35,6 @@ const App: React.FC = () => {
       }
     }));
     
-    // Scroll to contact section
     const contactSection = document.getElementById('contato');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -110,13 +110,32 @@ const App: React.FC = () => {
 
       <Footer theme={theme} />
 
-      {/* Floating Action Button */}
+      {/* Floating Action Button Otimizado */}
       <a 
-        href="#contato"
-        className="fixed bottom-8 right-8 z-50 p-5 bg-green-500 text-white rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 flex items-center justify-center group"
+        href="https://wa.me/244932815377"
+        target="_blank"
+        rel="noopener noreferrer"
+        onMouseEnter={() => setIsFabHovered(true)}
+        onMouseLeave={() => setIsFabHovered(false)}
+        className="fixed bottom-8 right-8 z-50 flex items-center group"
         aria-label="Pedir no WhatsApp"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/></svg>
+        <div className={`overflow-hidden transition-all duration-500 ease-out flex items-center bg-stone-900/80 backdrop-blur-xl border border-white/10 rounded-full mr-[-2rem] pr-10 pl-6 py-3 shadow-2xl ${isFabHovered ? 'max-w-xs opacity-100 translate-x-0' : 'max-w-0 opacity-0 translate-x-10'}`}>
+           <span className="text-white text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">Atendimento Online</span>
+        </div>
+        
+        <div className="relative">
+            {/* Efeito de pulso/glow */}
+            <div className="absolute inset-0 bg-green-500/40 rounded-full animate-ping scale-150 opacity-20 group-hover:bg-amber-600/40 transition-colors"></div>
+            
+            <div className={`relative h-16 w-16 bg-green-500 text-white rounded-full shadow-[0_15px_40px_-10px_rgba(34,197,94,0.5)] flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:bg-green-600 group-hover:shadow-green-500/50`}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/></svg>
+                {/* Badge Online */}
+                <div className="absolute top-1 right-1 w-4 h-4 bg-white rounded-full flex items-center justify-center">
+                    <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></div>
+                </div>
+            </div>
+        </div>
       </a>
     </div>
   );
