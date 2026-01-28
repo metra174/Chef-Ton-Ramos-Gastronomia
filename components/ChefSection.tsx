@@ -6,8 +6,8 @@ interface ChefSectionProps {
 }
 
 export const ChefSection: React.FC<ChefSectionProps> = ({ theme }) => {
-  // Usando uma das fotos reais enviadas para representar o trabalho do chef
-  const chefWorkImg = "https://i.imgur.com/e3aM6sk.jpeg";
+  // Corrigido para link direto da imagem
+  const chefWorkImg = "https://i.imgur.com/70iHk4w.jpeg";
 
   return (
     <section id="chef" className="relative py-24 px-6 overflow-hidden min-h-screen flex items-center">
@@ -25,13 +25,13 @@ export const ChefSection: React.FC<ChefSectionProps> = ({ theme }) => {
         <div className="flex flex-col lg:flex-row items-center gap-16 md:gap-24">
           <div className="relative w-full lg:w-1/2 flex justify-center">
             <div className="relative group">
-               {/* Decoração sutil */}
+               {/* Decoração sutil de brilho */}
                <div className="absolute -inset-4 bg-amber-600/20 blur-2xl rounded-[4rem] group-hover:bg-amber-600/30 transition-all duration-1000"></div>
                
                <div className={`relative z-10 w-full max-w-md aspect-[4/5] rounded-[3.5rem] overflow-hidden shadow-2xl border-8 ${theme === 'dark' ? 'border-stone-900' : 'border-white'}`}>
                 <img 
                   src={chefWorkImg} 
-                  alt="Trabalho do Chef Ton Ramos" 
+                  alt="Chef Ton Ramos em ação" 
                   className="w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-110"
                 />
               </div>
